@@ -8,14 +8,17 @@
 # View link for Dropbox-folder: https://www.dropbox.com/sh/xi8f4vlka3jryn3/AADM_AM5DrGyAsorm24KAKkNa?dl=0
 #
 # 2017-05-04/GF  Introduced, based on https://www.dropbox.com/developers/documentation/http/documentation
-#      
+# 2017-05-10/GF  Added user name at top    
 
 
 # Get filename as IP.txt (e.g. 127.168.1.123.txt) Needs "sed" to remove space at end...              
 TX_FILE_NAME=$(hostname -I | sed 's/ /.txt/')
 
+# Get user name at top
+cat user.txt > $TX_FILE_NAME
+
 # Get IP/MAC info from "arp" to file
-arp > $TX_FILE_NAME
+arp >> $TX_FILE_NAME
 
 # Copy IP-info-file to Dropbox using predefined token
 curl -X POST https://content.dropboxapi.com/2/files/upload \
