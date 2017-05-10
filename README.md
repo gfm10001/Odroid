@@ -1,2 +1,2 @@
 # Odroid
-Filer used for MdH ARC Odroid ROS
+Files used for MdH ARC Odroid ROS-project
